@@ -1,0 +1,98 @@
+---
+title: "Welcome to r2resize: In-text resizing for images and tables in Markdown and Quarto documents"
+author: "Obinna N. Obianom"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Welcome to r2resize: In-text resizing for images and tables in Markdown and Quarto documents}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+# Easily add automatic resizing toolbar for all images and tables in Markdown, Rmarkdown and Quarto documents
+
+## Installation and Library Attachment
+
+The r2resize package is available on CRAN and can be installed as shown below
+
+`install.packages(r2resize)`
+
+Attach library 
+
+`library(r2resize)`
+
+## Use
+
+The r2resize can be used within the R Markdown or Quarto document using an R chunk as shown below
+
+
+`r2resize::add.resizer()`
+
+or by using the available options. An example of how the available options can be used is show below
+
+```{r eval=FALSE,echo=TRUE}
+r2resize::add.resizer(
+  theme.color = "black",
+  position = "top",
+  font.size = "12px",
+  font.color = "darkblue",
+  tables = TRUE,
+  images = TRUE,
+  line.color = "orange",
+  line.width = 150
+)
+```
+
+# Images Examples
+
+Elit pellentesque habitant morbi tristique senectus et netus et malesuada. Amet massa vitae tortor condimentum lacinia quis vel eros. 
+
+
+Imperdiet nulla malesuada pellentesque elit eget gravida. Turpis massa sed elementum tempus egestas.
+
+```{r pressure3, echo=FALSE}
+
+plot(pressure)
+
+plot(mtcars)
+
+plot(cars)
+
+```
+
+# Table Examples
+
+## Use with dataTable 
+
+Libero id faucibus nisl tincidunt. Ultrices tincidunt arcu non sodales neque sodales ut etiam. Ut placerat orci nulla pellentesque dignissim enim sit amet. Tempus quam pellentesque nec nam. 
+
+```{r}
+
+library(DT)
+datatable(iris)
+
+```
+
+
+
+## Regular Markdown Table 1 and 2
+
+Egestas purus viverra accumsan in. Eu ultrices vitae auctor eu augue ut lectus. Leo integer malesuada nunc vel risus commodo.
+
+| Column 1 | Column 2 | Column 3 | Column 4 | Column 5 |
+|----------|----------|----------|----------|----------|
+| 1        | 23       | 1        | 45       | 6 - 12   |
+| 3        | 4        | 5        | NA       | 4 - 5.5  |
+| 7        | 7        | 5        | 0        | 5 - 34   |
+
+| head1 | head2 | head3 | head4 | head5 |
+|-------|-------|-------|-------|-------|
+| 1     | 23    | 1     | A     | AA    |
+| 3     | 4     | 5     | B     | BB    |
+| 7     | 7     | 5     | C     | CC    |
+
+
+# Full examples and documentation
+
+ + https://r2resize.obi.obianom.com
