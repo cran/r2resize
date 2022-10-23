@@ -1,14 +1,21 @@
 ---
-title: "r2resize example"
-author: "Obinna N. Obianom"
-date: "09/10/2022"
+title: "r2resize package with examples from all functionalities"
 output:
   html_document:
     theme: default
-    toc: true
+    toc: false
     toc_depth: 3
     toc_float: true
 ---
+
+### Visit docs: https://github.com/oobianom/r2resize
+
+# Install and Use
+
+```{r,eval=FALSE}
+install.packages(r2resize)
+library(r2resize)
+```
 
 # Theme setting
 
@@ -17,11 +24,12 @@ r2resize::add.resizer(
   theme.color = "black",
   position = "top",
   font.size = "12px",
-  font.color = "darkblue",
+  font.color = "black",
   tables = TRUE,
   images = TRUE,
   line.color = "orange",
-  line.height = 5
+  line.height = 5,
+  line.width = 200
 )
 
 ```
@@ -107,3 +115,86 @@ Egestas purus viverra accumsan in. Eu ultrices vitae auctor eu augue ut lectus. 
 | 1     | 23    | 1     | A     | AA    |
 | 3     | 4     | 5     | B     | BB    |
 | 7     | 7     | 5     | C     | CC    |
+
+
+## splitCard function: Resizable split screen container
+
+```{r}
+r2resize::splitCard(
+  "Sample text",
+  "Sample text 2"
+)
+
+
+r2resize::splitCard(
+  "Sample r2symbols 1",
+  "Sample nextGen 1",
+  bg.right.color = "white",
+  bg.left.color = "lightgray",
+  position = "vertical"
+)
+
+r2resize::splitCard(
+  "Sample shinyStorePlus",
+  "Sample nextGen 1",
+  bg.right.color = "white",
+  bg.left.color = "lightgray",
+  border.color = "black",
+  text.left.color = "black",
+  text.right.color = "black",
+  position = "vertical"
+)
+
+
+
+```
+
+
+Sample text - Porttitor rhoncus dolor purus non enim praesent elementum facilisis. Risus pretium quam vulputate dignissim suspendisse in. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Sed viverra ipsum nunc aliquet bibendum enim. 
+
+
+## sizeableCard function: Container with sizing toolbar
+
+```{r}
+
+r2resize::sizeableCard(shiny::h2("Sizeable text"), "
+Lobortis mattis aliquam faucibus purus in massa tempor. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. At lectus urna duis convallis. Arcu non odio euismod lacinia at quis risus. Tincidunt ornare massa eget egestas purus viverra accumsan in. Cras adipiscing enim eu turpis egestas pretium aenean.")
+
+
+r2resize::sizeableCard(shiny::h1("Second seziable text"),"
+Lobortis mattis aliquam faucibus purus in massa tempor. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. At lectus urna duis convallis. Arcu non odio euismod lacinia at quis risus. Tincidunt ornare massa eget egestas purus viverra accumsan in. Cras adipiscing enim eu turpis egestas pretium aenean.", bg.color = "lightgray", border.color="black")
+
+```
+
+
+Sample text as a separator - Porttitor rhoncus dolor purus non enim praesent elementum facilisis. Risus pretium quam vulputate dignissim suspendisse in. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Sed viverra ipsum nunc aliquet bibendum enim. 
+
+
+## windowCard function: Window like container with resizable and expandable functions 
+
+
+```{r}
+
+r2resize::windowCard("
+Drag to the edge of the window to expand. Lobortis mattis aliquam faucibus purus in massa tempor. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. At lectus urna duis convallis. Arcu non odio euismod lacinia at quis risus. Tincidunt ornare massa eget egestas purus viverra accumsan in. Cras adipiscing enim eu turpis egestas pretium aenean.",
+                     title = "Draggable, Resizable, Exapandable",
+                        width = "500px",
+                        bg.color = "white",
+                        border.color = "brown",
+                        header.text.color = "white",
+                        body.text.color = "black")
+
+```
+
+Sample text as a separator - Porttitor rhoncus dolor purus non enim praesent elementum facilisis. Risus pretium quam vulputate dignissim suspendisse in. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Sed viverra ipsum nunc aliquet bibendum enim. 
+
+## empahsisCard function: container with moving border 
+
+```{r}
+
+r2resize::empahsisCard("text1","heelo its mee", bg.color = "#f1f1f1")
+
+```
+
+
+Sample text as a separator - Porttitor rhoncus dolor purus non enim praesent elementum facilisis. Risus pretium quam vulputate dignissim suspendisse in. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Sed viverra ipsum nunc aliquet bibendum enim.
