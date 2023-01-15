@@ -22,7 +22,7 @@ Attach library
 
 `library(r2resize)`
 
-![](https://obianom.com/r2resize2.gif)
+
 
 ### Use cases
 
@@ -68,7 +68,7 @@ Drag to the edge of the window to expand. Lobortis mattis aliquam faucibus purus
 
 ```{r,eval= FALSE}
 
-r2resize::empahsisCard("text1","text2", bg.color = "#f1f1f1")
+r2resize::emphasisCard("text1","text2", bg.color = "#f1f1f1")
 
 ```
 
