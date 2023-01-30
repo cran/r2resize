@@ -27,6 +27,7 @@
 
 ## ----eval= FALSE--------------------------------------------------------------
 #  
-#  r2resize::emphasisCard("text1","text2", bg.color = "#f1f1f1")
+#  library(r2symbols)
+#  r2resize::emphasisCard("text1",symbol("heart","ram","hippopotamus","alpha","beta",font.size=60), bg.color = "lightblue")
 #  
 
