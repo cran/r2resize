@@ -39,7 +39,10 @@ r2resize::add.resizer(
 
 ```{r}
 
-r2resize::empahsisCard("text1","heelo its mee", bg.color = "#f1f1f1")
+r2resize::emphasisCard(shiny::div(
+    shiny::tags$h2("Question"),
+     shiny::tags$h4("Let's begin with a simply curiousity. Do you consider yourself successful?")
+  ), bg.color = "#f1f1f1")
 
 ```
 
@@ -147,8 +150,10 @@ Sample text as a separator - Porttitor rhoncus dolor purus non enim praesent ele
 
 ```{r}
 
-r2resize::windowCard("
-Drag to the edge of the window to expand. Lobortis mattis aliquam faucibus purus in massa tempor. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. At lectus urna duis convallis. Arcu non odio euismod lacinia at quis risus. Tincidunt ornare massa eget egestas purus viverra accumsan in. Cras adipiscing enim eu turpis egestas pretium aenean.",
+r2resize::windowCard( shiny::div(
+    shiny::tags$h2("Answer"),
+    shiny::tags$h4("I’m interviewing with a few companies for a range of positions, but they all come down to delivering an excellent customer experience. I wanted to keep an open mind about how to best achieve that goal, but so far it seems that this role will really allow me to focus all of my energy on customer experience and retention, which I find very appealing.")
+  ),
                      title = "Draggable, Resizable, Exapandable",
                         width = "500px",
                         bg.color = "white",

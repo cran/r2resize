@@ -130,7 +130,7 @@ splitCard <- function(left,
 
   # set initial content
   bgcol <- "background-color:"
-  bgurl <- "background-image:url("
+  bgurl <- "background-size: cover;background-image:url("
   textcol <- "color:"
   shiny::div(shiny::div(
     class = holders,
@@ -160,6 +160,148 @@ splitCard <- function(left,
     )
   ),
   cssjs)
+}
+charNum1to100 <- as.character(unique(c(80,1:100)))
+
+
+#' Re sizable split screen container version 2
+#'
+#' Highly customizable and re sizable split screen container version 2
+#'
+#' @param left content on the left or top
+#' @param right content on the right or bottom
+#' @param bg.left.color left panel color e.g red, black or #333333
+#' @param bg.right.color right panel color e.g red, black or #333333
+#' @param border.color border color of the container e.g. red or #f5f5f5
+#' @param text.left.color color of left panel text
+#' @param text.right.color color of right panel text
+#' @param slider.position position of the slider in percent
+#'
+#' @section Examples for r2resize:
+#' More examples and demo pages are located at this link -
+#' \url{https://rpkg.net/package/r2resize}.
+#'
+#' @return Realizable split screen container style 2
+#'
+#' @examples
+#'
+#' r2resize::splitCard2(
+#'   shiny::tags$h1("Question 1"),
+#'   shiny::tags$h1("Answer 1"),
+#'   slider.position = "40"
+#' )
+#'
+#'
+#' r2resize::splitCard2(
+#'   "Sample r2symbols 1",
+#'   "Sample nextGen 1",
+#'   bg.right.color = "white",
+#'   bg.left.color = "lightgray"
+#' )
+#'
+#' r2resize::splitCard2(
+#'   "Sample shinyStorePlus",
+#'   "Sample nextGen 1",
+#'   bg.right.color = "white",
+#'   bg.left.color = "lightgray",
+#'   border.color = "black",
+#'   text.left.color = "black",
+#'   text.right.color = "black"
+#' )
+#'
+#' r2resize::splitCard2(
+#'   "Sample sciRmdTheme 1",
+#'   "Sample nextGen 1",
+#'   bg.right.color = "white",
+#'   bg.left.color = "lightgray",
+#'   border.color = "gray",
+#'   text.left.color = "black",
+#'   text.right.color = "black"
+#' )
+#'
+#' @export
+
+splitCard2 <- function(left,
+                       right,
+                       bg.left.color = NULL,
+                       bg.right.color = NULL,
+                       border.color = NULL,
+                       text.left.color = "black",
+                       text.right.color = "black",
+                       slider.position = charNum1to100) {
+
+  # set position
+  slider.position = paste0(match.arg(slider.position),"%")
+
+  # preset
+  if(is.null(border.color)) border.color <- "#ffffff"
+  uniquenum <-nextGenShinyApps::rand.num(1)
+  uniqclass <- paste0("r2rsC2",uniquenum)
+
+  # fetch css
+  css <- ""
+  theme.02.css <- paste0(template.loc(), "/splitCard2.css")
+  if (file.exists(theme.02.css)) {
+    css <- c(css, "<style>", readLines(theme.02.css), "</style>")
+    css <- gsub("sib534lver", border.color, css)
+    css <- gsub("slidepos1232", slider.position, css)
+    css <- paste(css, collapse = "")
+  }
+
+
+  # script fetch js
+  theme.02.js <- paste0(template.loc(), "/splitCard2.js")
+  script <- ""
+  if (file.exists(theme.02.js)) {
+    script <-
+      paste(c("<script>", readLines(theme.02.js), "</script>"), collapse = " ")
+    script <- gsub("slidepos1232", slider.position, script)
+  }
+  # combine stylesheets and scripts
+  cssjs <- paste0(css, script)
+  cssjs <- gsub("c87n767m08o", uniqclass, cssjs)
+  # set to html
+  attr(cssjs, "html") <- TRUE
+  class(cssjs) <- c("html", "character")
+
+  # set initial content
+  bgcol <- "background-color:"
+  textcol <- "color:"
+  shiny::div(
+    class = uniqclass,
+    shiny::div(
+      class = paste0("r2resize-",uniqclass,"-splitcard2-split-container"),
+      shiny::div(
+        class = paste0("r2resize-",uniqclass,"-splitcard2-split-content-left"),
+        style = paste0(bgcol, bg.left.color, ";"),
+        shiny::div(
+          class = paste0("r2resize-",uniqclass,"-splitcard2-content-text"),
+          style = ifelse(is.null(text.left.color), "", paste0(textcol, text.left.color, ";")),
+          shiny::div(
+            shiny::div(
+              class = paste0("r2resize-",uniqclass,"-splitcard2-text-left"),
+              left
+            )
+          )
+        )
+      ),
+      shiny::div(
+        class = paste0("r2resize-",uniqclass,"-splitcard2-split-content-right"),
+        style = paste0(bgcol, bg.right.color, ";"),
+        shiny::div(
+          class = paste0("r2resize-",uniqclass,"-splitcard2-content-text"),
+          style = ifelse(is.null(text.right.color), "", paste0(textcol, text.right.color, ";")),
+          shiny::div(
+            shiny::div(
+              class = paste0("r2resize-",uniqclass,"-splitcard2-text-left"),
+              right
+            )
+          )
+        )
+      )
+    ),
+    cssjs
+  )
 }
 
 
@@ -417,3 +559,5 @@ empahsisCard <- function(..., bg.color = NULL) {
 #'
 
 emphasisCard <- empahsisCard
+
+
