@@ -2,7 +2,7 @@ Package: r2resize
 Type: Package
 Title: In-Text Expandable and Resizable Containers, Images, Tables and
         Data Tables in 'Shiny', 'Rmarkdown' and 'Quarto' Documents
-Version: 1.6
+Version: 1.7
 Authors@R: c(
     person("Obinna", "Obianom", email = "idonshayo@gmail.com", role = c("aut", "cre")))
 Maintainer: Obinna Obianom <idonshayo@gmail.com>
@@ -19,7 +19,7 @@ Language: en-US
 LazyData: false
 RoxygenNote: 7.2.3
 NeedsCompilation: no
-Packaged: 2023-04-07 18:43:00 UTC; in198
+Packaged: 2023-07-07 06:25:59 UTC; in198
 Author: Obinna Obianom [aut, cre]
 Repository: CRAN
-Date/Publication: 2023-04-07 18:50:02 UTC
+Date/Publication: 2023-07-07 06:50:02 UTC

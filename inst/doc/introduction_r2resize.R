@@ -7,7 +7,8 @@ r2resize::add.resizer(
   tables = TRUE,
   images = TRUE,
   line.color = "orange",
-  line.width = 150
+  line.width = 150,
+  default.image.width="40%"
 )
 
 ## ----eval=TRUE,echo=TRUE------------------------------------------------------
