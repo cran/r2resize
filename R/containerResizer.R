@@ -21,13 +21,13 @@
 #' @return Resizeable split screen container
 #'
 #' @examples
-#'
+#' #basic attributes
 #' r2resize::splitCard(
 #'   "Sample text",
 #'   "Sample text 2"
 #' )
 #'
-#'
+#' #specify background color for each side
 #' r2resize::splitCard(
 #'   "Sample r2symbols 1",
 #'   "Sample nextGen 1",
@@ -36,6 +36,7 @@
 #'   position = "vertical"
 #' )
 #'
+#' #add the split card attribute on vertical
 #' r2resize::splitCard(
 #'   "Sample shinyStorePlus",
 #'   "Sample nextGen 1",
@@ -47,6 +48,8 @@
 #'   position = "vertical"
 #' )
 #'
+#'
+#' # specify split card on the horizontal position
 #' r2resize::splitCard(
 #'   "Sample sciRmdTheme 1",
 #'   "Sample nextGen 1",
@@ -184,14 +187,15 @@ charNum1to100 <- as.character(unique(c(80,1:100)))
 #' @return Realizable split screen container style 2
 #'
 #' @examples
-#'
+#' #Use the default split card 2 function
+#' #add a question on one side, and answer on the other
 #' r2resize::splitCard2(
 #'   shiny::tags$h1("Question 1"),
 #'   shiny::tags$h1("Answer 1"),
 #'   slider.position = "40"
 #' )
 #'
-#'
+#' #specify the backgroun color for the sides
 #' r2resize::splitCard2(
 #'   "Sample r2symbols 1",
 #'   "Sample nextGen 1",
@@ -199,6 +203,9 @@ charNum1to100 <- as.character(unique(c(80,1:100)))
 #'   bg.left.color = "lightgray"
 #' )
 #'
+#'
+#' #alter the border color
+#' #specify the text color for each side
 #' r2resize::splitCard2(
 #'   "Sample shinyStorePlus",
 #'   "Sample nextGen 1",
@@ -209,14 +216,15 @@ charNum1to100 <- as.character(unique(c(80,1:100)))
 #'   text.right.color = "black"
 #' )
 #'
+#' ##change the text color from one side to the other
 #' r2resize::splitCard2(
 #'   "Sample sciRmdTheme 1",
 #'   "Sample nextGen 1",
 #'   bg.right.color = "white",
 #'   bg.left.color = "lightgray",
 #'   border.color = "gray",
-#'   text.left.color = "black",
-#'   text.right.color = "black"
+#'   text.left.color = "red",
+#'   text.right.color = "blue"
 #' )
 #'
 #' @export
@@ -321,11 +329,20 @@ splitCard2 <- function(left,
 #' @return Container with a resizing toolbar feature on the right
 #'
 #' @examples
-#'
+#' #simple sizeable card attribute
 #' r2resize::sizeableCard(
 #'   "sample rpkg.net text"
 #' )
 #'
+#'
+#' #specify the background color for the card
+#' r2resize::sizeableCard(
+#'   "sample r2resume text",
+#'   bg.color = "lightgray"
+#' )
+#'
+#'
+#' #specify the border color additionally
 #' r2resize::sizeableCard(
 #'   "sample r2resume text",
 #'   bg.color = "lightgray",
@@ -419,9 +436,15 @@ sizeableCard <- function(...,
 #' @return A window-like card container that is expandable and resizable
 #'
 #' @examples
-#'
+#' #simple window card with default attributes
+#' #shows up centered on the screen
 #' r2resize::windowCard("sample r2symbols text")
 #'
+#'
+#' #specify the width of the window card
+#' #specify the title
+#' #specify the header color
+#' #speciy other features
 #' r2resize::windowCard(
 #' title = "Sample Window card",
 #' width = "500px",
@@ -507,11 +530,19 @@ windowCard <- function(...,
 #' @return container with a moving border to denote emphasis
 #'
 #' @examples
+#' #make a simple emphasis card
+#' #add as much content as need
+#' r2resize::empahsisCard(
+#'   "sample rpkg.net 1",
+#'   "sample rpkg.net 2 "
+#' )
 #'
+#'
+#' #specify the color of the background
 #' r2resize::empahsisCard(
 #'   "sample rpkg.net 1",
 #'   "sample rpkg.net 2 ",
-#'   bg.color = "cyan"
+#'   bg.color = "brown"
 #' )
 #'
 #' @export
@@ -534,27 +565,11 @@ empahsisCard <- function(..., bg.color = NULL) {
 
   # content
   shiny::div(shiny::div(class = "r2resize-emphasizeDiv",
-                        ...),
-             css)
+                        ...),css)
 }
 
 
-#' Create an Emphasis Card
-#'
-#' Emphasis container
-#'
-#' @inheritParams empahsisCard
-#'
-#' @return container with a moving border to denote emphasis
-#'
-#' @examples
-#'
-#' r2resize::emphasisCard(
-#'   "sample rpkg.net 1",
-#'   "sample rpkg.net 2 ",
-#'   bg.color = "cyan"
-#' )
-#'
+#' @inherit empahsisCard
 #' @export
 #'
 

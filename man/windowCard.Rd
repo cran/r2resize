@@ -45,9 +45,15 @@ More examples and demo pages are located at this link -
 }
 
 \examples{
-
+#simple window card with default attributes
+#shows up centered on the screen
 r2resize::windowCard("sample r2symbols text")
 
+
+#specify the width of the window card
+#specify the title
+#specify the header color
+#speciy other features
 r2resize::windowCard(
 title = "Sample Window card",
 width = "500px",

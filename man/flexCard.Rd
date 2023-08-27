@@ -39,7 +39,6 @@ More examples and demo pages are located at this link -
 }
 
 \examples{
-
 r2resize::flexCard(
   item1 = c(
   bg = "https://r2resize.obi.obianom.com/m/image1.jpg",

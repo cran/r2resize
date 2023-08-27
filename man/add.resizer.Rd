@@ -55,13 +55,48 @@ Set options for the inclusion of sizing toolbar in documents
 }
 \section{Examples for r2resize}{
 
-More examples and demo pages for are located at this link -
-\url{https://rnetwork.obi.obianom.com/package/r2resize}.
+More examples and demo pages for this function are located at this link -
+\url{https://r2resize.obi.obianom.com}.
 }
 
 \examples{
-r2resize::add.resizer() #default settings
+# default settings
+r2resize::add.resizer()
 
+# add resizer to only images
+r2resize::add.resizer(
+  tables = FALSE,
+  images = TRUE
+ )
+
+
+# add resizer to only tables
+r2resize::add.resizer(
+  tables = TRUE,
+  images = FALSE
+ )
+
+
+# add resizer to both images
+r2resize::add.resizer(
+  tables = TRUE,
+  images = TRUE
+ )
+
+# set position of the resize toolbar
+r2resize::add.resizer(
+  position = "top" #this is the default, another is 'bottom'
+ )
+
+# set resizer line color, height and width
+r2resize::add.resizer(
+  line.color = "green",
+  line.width = 150,
+  line.height = 5
+ )
+
+
+#declare more arguments including default image size
 r2resize::add.resizer(
   theme.color = "blue",
   position = "top",

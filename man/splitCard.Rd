@@ -54,13 +54,13 @@ More examples and demo pages are located at this link -
 }
 
 \examples{
-
+#basic attributes
 r2resize::splitCard(
   "Sample text",
   "Sample text 2"
 )
 
-
+#specify background color for each side
 r2resize::splitCard(
   "Sample r2symbols 1",
   "Sample nextGen 1",
@@ -69,6 +69,7 @@ r2resize::splitCard(
   position = "vertical"
 )
 
+#add the split card attribute on vertical
 r2resize::splitCard(
   "Sample shinyStorePlus",
   "Sample nextGen 1",
@@ -80,6 +81,8 @@ r2resize::splitCard(
   position = "vertical"
 )
 
+
+# specify split card on the horizontal position
 r2resize::splitCard(
   "Sample sciRmdTheme 1",
   "Sample nextGen 1",
