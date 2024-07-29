@@ -1,10 +1,12 @@
-# r2resize: In-text resizing of containers, images and tables in Rmarkdown documents and Shiny apps <img src="https://r2resize.obi.obianom.com/r2resize_logo.png" width="200" align="right"/>
+# r2resize 1.9.1: In-text resizing of containers, images and tables in Rmarkdown documents and R based apps <img src="https://r2resize.obi.obianom.com/r2resize_logo.png" width="200" align="right"/>
 
 ### Official site: https://r2resize.obi.obianom.com
 
 ### Demo output: [View here](https://rstudio-pubs-static.s3.amazonaws.com/977399_37ed43a251fe493d87efe81c452b7f7d.html)
 
-### Demo video: [View here](https://r2resize.obi.obianom.com/r2resize-package.gif)
+### Demo complete YouTube tutorial: [View here](https://www.youtube.com/watch?v=kkcXJbwVZnw&t=7s)
+
+### Demo short video: [View here](https://r2resize.obi.obianom.com/r2resize-package.gif)
 
 ### Sample R code to get started: [View here](https://github.com/oobianom/r2resize/blob/main/inst/examples/sample1.Rmd)
 
@@ -151,3 +153,4 @@ _NOTE: Please note that r2resize::add.resizer() should only be used in Rmarkdown
 
 
 
+###### By Obinna Obi Obianom, Creator of www.rpkg.net and www.shinyappstore.com
