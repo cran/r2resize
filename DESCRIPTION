@@ -2,7 +2,7 @@ Package: r2resize
 Type: Package
 Title: In-Text Resize for Images, Tables and Fancy Resize Containers in
         'shiny', 'rmarkdown' and 'quarto' Documents
-Version: 1.9.1
+Version: 1.9.2
 Authors@R: c(
     person("Obinna", "Obianom", email = "idonshayo@gmail.com", role = c("aut", "cre")))
 Maintainer: Obinna Obianom <idonshayo@gmail.com>
@@ -20,7 +20,7 @@ LazyData: false
 RoxygenNote: 7.2.3
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2024-07-29 19:27:40 UTC; in198
+Packaged: 2024-11-25 07:00:52 UTC; in198
 Author: Obinna Obianom [aut, cre]
 Repository: CRAN
-Date/Publication: 2024-07-29 22:00:06 UTC
+Date/Publication: 2024-11-25 07:10:02 UTC
