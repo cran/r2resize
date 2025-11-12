@@ -1,0 +1,121 @@
+## ----setup, include = FALSE---------------------------------------------------
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+library(r2resize)
+library(shiny)
+library(htmltools)
+
+## ----addresizer-example, eval=FALSE-------------------------------------------
+#  # Default settings: adds resizer to both images and tables (at the top)
+#  r2resize::add.resizer()
+#  
+#  # Add resizer only to images
+#  r2resize::add.resizer(
+#    tables = FALSE,
+#    images = TRUE
+#  )
+#  
+#  # Add resizer to tables only, at the bottom of the page
+#  r2resize::add.resizer(
+#    tables = TRUE,
+#    images = FALSE,
+#    position = "bottom"
+#  )
+#  
+#  # Customized resizer with specific colors and sizes
+#  r2resize::add.resizer(
+#    theme.color = "darkred",
+#    font.size = "13px",
+#    font.color = "white",
+#    line.color = "gold",
+#    line.width = 200,
+#    line.height = 10,
+#    default.image.width = "50%"
+#  )
+#  
+#  # Example within a Shiny app
+#  if (interactive()) {
+#    shinyApp(
+#      ui = fluidPage(
+#        add.resizer(tables = TRUE, images = TRUE, position = "top"),
+#        h2("Resizeable Content in Shiny"),
+#        tags$img(src = "https://r2resize.obi.obianom.com/m/image1.jpg", alt = "Sample Image 1", width = "200px"),
+#        tags$p("This is some text."),
+#        tags$img(src = "https://r2resize.obi.obianom.com/m/image2.jpg", alt = "Sample Image 2", width = "150px"),
+#        tags$br(),
+#        tags$table(border = "1", style = "width:50%;",
+#                   tags$tr(tags$th("Header 1"), tags$th("Header 2")),
+#                   tags$tr(tags$td("Row 1, Col 1"), tags$td("Row 1, Col 2")))
+#      ),
+#      server = function(input, output) {}
+#    )
+#  }
+
+## ----shinyexpandimage-example, eval=FALSE-------------------------------------
+#  # Simple image expansion for a single gallery in a Shiny app
+#  if (interactive()) {
+#    shinyApp(
+#      ui = fluidPage(
+#        h2("Interactive Image Gallery"),
+#        shinyExpandImage(c("my_gallery_id")),
+#        tags$div(
+#          id = "my_gallery_id",
+#          tags$a(
+#            href = "https://r2resize.obi.obianom.com/m/1b.jpg",
+#            tags$img(src = "https://r2resize.obi.obianom.com/m/1b.jpg", alt = "Landscape 1", width = "150px")
+#          ),
+#          tags$a(
+#            href = "https://r2resize.obi.obianom.com/m/1.jpg",
+#            tags$img(src = "https://r2resize.obi.obianom.com/m/1.jpg", alt = "Landscape 2", width = "150px")
+#          ),
+#          tags$a(
+#            href = "https://r2resize.obi.obianom.com/m/image2.jpg",
+#            tags$img(src = "https://r2resize.obi.obianom.com/m/image2.jpg", alt = "Landscape 3", width = "150px")
+#          )
+#        )
+#      ),
+#      server = function(input, output) {}
+#    )
+#  }
+#  
+#  # Multiple image galleries on the same Shiny page
+#  if (interactive()) {
+#    shinyApp(
+#      ui = fluidPage(
+#        h2("Multiple Image Galleries"),
+#        shinyExpandImage(c("gallery_one", "gallery_two")), # Pass multiple IDs
+#  
+#        h3("Gallery One"),
+#        tags$div(
+#          id = "gallery_one",
+#          tags$a(
+#            href = "https://r2resize.obi.obianom.com/m/image1.jpg",
+#            tags$img(src = "https://r2resize.obi.obianom.com/m/image1.jpg", alt = "Nature 1", width = "100px")
+#          ),
+#          tags$a(
+#            href = "https://r2resize.obi.obianom.com/m/image2.jpg",
+#            tags$img(src = "https://r2resize.obi.obianom.com/m/image2.jpg", alt = "Nature 2", width = "100px")
+#          )
+#        ),
+#  
+#        h3("Gallery Two"),
+#        tags$div(
+#          id = "gallery_two",
+#          tags$a(
+#            href = "https://r2resize.obi.obianom.com/m/1b.jpg",
+#            tags$img(src = "https://r2resize.obi.obianom.com/m/1b.jpg", alt = "City 1", width = "100px")
+#          ),
+#          tags$a(
+#            href = "https://r2resize.obi.obianom.com/m/1.jpg",
+#            tags$img(src = "https://r2resize.obi.obianom.com/m/1.jpg", alt = "City 2", width = "100px")
+#          )
+#        )
+#      ),
+#      server = function(input, output) {}
+#    )
+#  }
+

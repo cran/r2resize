@@ -1,0 +1,139 @@
+## ----setup, include = FALSE---------------------------------------------------
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+library(r2resize)
+library(shiny)
+library(htmltools)
+
+## ----flexcard-example, eval=FALSE---------------------------------------------
+#  # Basic flex card with two items
+#  r2resize::flexCard(
+#    item1 = c(
+#      bg = "https://r2resize.obi.obianom.com/m/image1.jpg",
+#      icon = "home",
+#      title = "Welcome Home",
+#      subtitle = "Your personalized dashboard"
+#    ),
+#    item2 = c(
+#      bg = "https://r2resize.obi.obianom.com/m/image2.jpg",
+#      icon = "info",
+#      title = "About Us",
+#      subtitle = "Learn more about our services",
+#      icon.color = "blue",
+#      text.color = "white"
+#    )
+#  )
+#  
+#  # Flex card with custom dimensions and active panel
+#  r2resize::flexCard(
+#    itemA = c(
+#      bg = "https://r2resize.obi.obianom.com/m/1b.jpg",
+#      icon = "chart-line",
+#      title = "Analytics",
+#      subtitle = "View your data insights"
+#    ),
+#    itemB = c(
+#      bg = "https://r2resize.obi.obianom.com/m/1.jpg",
+#      icon = "envelope",
+#      title = "Messages",
+#      subtitle = "Check your inbox",
+#      icon.color = "red",
+#      text.color = "lightgray"
+#    ),
+#    height.px = 300,
+#    width.px = 800,
+#    border.color = "darkgray",
+#    border.width.px = 2,
+#    active.panel = 2 # Make the second item active by default
+#  )
+#  
+#  # Example within a Shiny app
+#  if (interactive()) {
+#    shinyApp(
+#      ui = fluidPage(
+#        h2("Flex Cards in Shiny"),
+#        flexCard(
+#          item1 = c(
+#            bg = "https://r2resize.obi.obianom.com/m/image1.jpg",
+#            icon = "lightbulb",
+#            title = "Idea Generation",
+#            subtitle = "Brainstorm new concepts"
+#          ),
+#          item2 = c(
+#            bg = "https://r2resize.obi.obianom.com/m/image2.jpg",
+#            icon = "code",
+#            title = "Development",
+#            subtitle = "Build your next project",
+#            icon.color = "green"
+#          )
+#        )
+#      ),
+#      server = function(input, output) {}
+#    )
+#  }
+
+## ----elasticard-example, eval=FALSE-------------------------------------------
+#  # Elasti card with text content
+#  r2resize::elastiCard(
+#    item1 = c(
+#      title = "Product Features",
+#      subtitle = "Innovative and user-friendly",
+#      desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+#      text.color = "lightgreen"
+#    ),
+#    item2 = c(
+#      title = "Our Vision",
+#      subtitle = "Pioneering the future",
+#      desc = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+#      text.color = "orange"
+#    )
+#  )
+#  
+#  # Elasti card with background images and text
+#  r2resize::elastiCard(
+#    item1 = c(
+#      bg = "https://r2resize.obi.obianom.com/m/1b.jpg",
+#      title = "Scenic Landscapes",
+#      subtitle = "Explore breathtaking views",
+#      desc = "A collection of stunning natural beauty from around the world."
+#    ),
+#    item2 = c(
+#      bg = "https://r2resize.obi.obianom.com/m/1.jpg",
+#      title = "Urban Exploration",
+#      subtitle = "Discover city life",
+#      desc = "Dive into the vibrant and dynamic atmosphere of metropolitan areas."
+#    ),
+#    height.px = 350,
+#    width.px = 900,
+#    border.color = "gray",
+#    border.width.px = 3
+#  )
+#  
+#  # Example within a Shiny app
+#  if (interactive()) {
+#    shinyApp(
+#      ui = fluidPage(
+#        h2("Elastic Cards in Shiny"),
+#        elastiCard(
+#          item1 = c(
+#            bg = "https://r2resize.obi.obianom.com/m/image1.jpg",
+#            title = "Project Alpha",
+#            subtitle = "Phase 1 Complete",
+#            desc = "Successfully concluded the initial development phase with excellent results."
+#          ),
+#          item2 = c(
+#            bg = "https://r2resize.obi.obianom.com/m/image2.jpg",
+#            title = "Project Beta",
+#            subtitle = "Upcoming Milestones",
+#            desc = "Preparing for the next stage of development and feature integration."
+#          )
+#        )
+#      ),
+#      server = function(input, output) {}
+#    )
+#  }
+

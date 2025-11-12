@@ -2,20 +2,29 @@
 % Please edit documentation in R/containerResizer.R
 \name{emphasisCard}
 \alias{emphasisCard}
-\title{Create an Emphasis Card}
+\title{Create an Emphasis Card with a Dynamic Border}
 \usage{
 emphasisCard(..., bg.color = NULL)
 }
 \arguments{
-\item{...}{content of the card}
+\item{...}{The content to be placed inside the emphasis card. Can be any `shiny::tagList` or HTML content.}
 
-\item{bg.color}{content background color}
+\item{bg.color}{The background color of the content area. Can be a named R color (e.g., "red", "black") or a hexadecimal color code (e.g., "#333333").}
 }
 \value{
-container with a moving border to denote emphasis
+A `shiny::div` element representing the emphasis card with its dynamic border, ready for inclusion in a Shiny UI or R Markdown output.
 }
 \description{
-Emphasis container
+Creates a container that visually emphasizes its content with a subtle, dynamic border effect.
+This card is designed to draw user attention to important information or sections.
+}
+\details{
+The `empahsisCard` (and its alias `emphasisCard`) provides a unique visual cue to highlight content.
+The border of the card subtly animates or changes, indicating that the content within is significant
+or has a special status. This is ideal for calls to action, important notices, or featured content.
+}
+\note{
+This function requires the `shiny` package for rendering.
 }
 \section{More examples for r2resize}{
 
@@ -24,19 +33,41 @@ More examples and demo pages are located at this link -
 }
 
 \examples{
-#make a simple emphasis card
-#add as much content as need
-r2resize::empahsisCard(
-  "sample rpkg.net 1",
-  "sample rpkg.net 2 "
-)
+if (interactive()) {
+  library(shiny)
+  # Simple emphasis card with basic text
+  shinyApp(
+    ui = fluidPage(
+      h2("Emphasis Card Example"),
+      empahsisCard(
+        shiny::h4("Important Announcement!"),
+        shiny::p("Please read this crucial message.")
+      )
+    ),
+    server = function(input, output) {}
+  )
 
+  # Emphasis card with a custom background color and multiple elements
+  shinyApp(
+    ui = fluidPage(
+      h2("Styled Emphasis Card"),
+      empahsisCard(
+        shiny::h3("Featured Product"),
+        shiny::img(src = "https://r2resize.obi.obianom.com/m/logo.png", height = "50px"),
+        shiny::p("Check out our new amazing product!"),
+        bg.color = "#FFEBEE"
+      )
+    ),
+    server = function(input, output) {}
+  )
+}
+}
+\seealso{
+\code{\link{emphasisCard}} (alias), \code{\link{splitCard}}
 
-#specify the color of the background
-r2resize::empahsisCard(
-  "sample rpkg.net 1",
-  "sample rpkg.net 2 ",
-  bg.color = "brown"
-)
-
+Other Container Functions: 
+\code{\link{sizeableCard}()},
+\code{\link{splitCard}()},
+\code{\link{splitCard2}()},
+\code{\link{windowCard}()}
 }

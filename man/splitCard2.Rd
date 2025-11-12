@@ -2,7 +2,7 @@
 % Please edit documentation in R/containerResizer.R
 \name{splitCard2}
 \alias{splitCard2}
-\title{Re sizable split screen container version 2}
+\title{Resizable Split Screen Container Version 2 (Fixed Slider)}
 \usage{
 splitCard2(
   left,
@@ -16,27 +16,38 @@ splitCard2(
 )
 }
 \arguments{
-\item{left}{content on the left or top}
+\item{left}{The content to be displayed in the left panel. Can be any `shiny::tagList` or HTML content.}
 
-\item{right}{content on the right or bottom}
+\item{right}{The content to be displayed in the right panel. Can be any `shiny::tagList` or HTML content.}
 
-\item{bg.left.color}{left panel color e.g red, black or #333333}
+\item{bg.left.color}{The background color of the left panel. Can be a named R color (e.g., "red", "black") or a hexadecimal color code (e.g., "#333333").}
 
-\item{bg.right.color}{right panel color e.g red, black or #333333}
+\item{bg.right.color}{The background color of the right panel. Can be a named R color or a hexadecimal color code.}
 
-\item{border.color}{border color of the container e.g. red or #f5f5f5}
+\item{border.color}{The border color of the entire container. Can be a named R color or a hexadecimal color code.}
 
-\item{text.left.color}{color of left panel text}
+\item{text.left.color}{The text color for the content within the left panel.}
 
-\item{text.right.color}{color of right panel text}
+\item{text.right.color}{The text color for the content within the right panel.}
 
-\item{slider.position}{position of the slider in percent}
+\item{slider.position}{The fixed position of the slider as a percentage from 1 to 100 (e.g., "40" for 40\% left panel width). Defaults to "80".}
 }
 \value{
-Realizable split screen container style 2
+A `shiny::div` element representing the split screen container style 2, ready for inclusion in a Shiny UI or R Markdown output.
 }
 \description{
-Highly customizable and re sizable split screen container version 2
+Creates a highly customizable and resizable split screen container with a fixed, non-draggable slider position.
+This version is ideal for presenting two content areas with a pre-defined division.
+}
+\details{
+Unlike `splitCard`, `splitCard2` provides a static split where the division between the left and right
+content areas is set by the `slider.position` and cannot be interactively adjusted by the user.
+This makes it suitable for layouts where the proportional display of content is fixed.
+Common use cases include presenting questions and answers, code alongside output, or two related pieces of
+information with a predetermined visual hierarchy.
+}
+\note{
+This function requires the `shiny` package for rendering.
 }
 \section{Examples for r2resize}{
 
@@ -45,44 +56,49 @@ More examples and demo pages are located at this link -
 }
 
 \examples{
-#Use the default split card 2 function
-#add a question on one side, and answer on the other
-r2resize::splitCard2(
-  shiny::tags$h1("Question 1"),
-  shiny::tags$h1("Answer 1"),
-  slider.position = "40"
-)
+if (interactive()) {
+  library(shiny)
+  # Basic split card 2 with a 40\\% left panel
+  shinyApp(
+    ui = fluidPage(
+      h2("Basic Fixed Split Card"),
+      splitCard2(
+        shiny::div(h1("Question:"), p("What is the capital of France?")),
+        shiny::div(h1("Answer:"), p("Paris.")),
+        slider.position = "40",
+        bg.left.color = "#FFFDE7",
+        bg.right.color = "#E8F5E9"
+      )
+    ),
+    server = function(input, output) {}
+  )
 
-#specify the backgroun color for the sides
-r2resize::splitCard2(
-  "Sample r2symbols 1",
-  "Sample nextGen 1",
-  bg.right.color = "white",
-  bg.left.color = "lightgray"
-)
-
-
-#alter the border color
-#specify the text color for each side
-r2resize::splitCard2(
-  "Sample shinyStorePlus",
-  "Sample nextGen 1",
-  bg.right.color = "white",
-  bg.left.color = "lightgray",
-  border.color = "black",
-  text.left.color = "black",
-  text.right.color = "black"
-)
-
-##change the text color from one side to the other
-r2resize::splitCard2(
-  "Sample sciRmdTheme 1",
-  "Sample nextGen 1",
-  bg.right.color = "white",
-  bg.left.color = "lightgray",
-  border.color = "gray",
-  text.left.color = "red",
-  text.right.color = "blue"
-)
-
+  # Split card 2 with custom text and border colors
+  shinyApp(
+    ui = fluidPage(
+      h2("Styled Fixed Split Card"),
+      splitCard2(
+        shiny::div(h4("Left Side"), p("Detailed information here.")),
+        shiny::div(h4("Right Side"), p("Corresponding summary or data.")),
+        bg.right.color = "white",
+        bg.left.color = "#F0F4C3",
+        border.color = "#FFC107",
+        text.left.color = "darkgreen",
+        text.right.color = "darkblue",
+        slider.position = "60"
+      )
+    ),
+    server = function(input, output) {}
+  )
 }
+}
+\seealso{
+\code{\link{splitCard}}, \code{\link{sizeableCard}}, \code{\link{windowCard}}
+
+Other Container Functions: 
+\code{\link{empahsisCard}()},
+\code{\link{sizeableCard}()},
+\code{\link{splitCard}()},
+\code{\link{windowCard}()}
+}
+\concept{Container Functions}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/containerResizer.R
 \name{windowCard}
 \alias{windowCard}
-\title{Resizable Moveable Expandable Window Card}
+\title{Resizable, Moveable, and Expandable Window Card}
 \usage{
 windowCard(
   ...,
@@ -15,28 +15,37 @@ windowCard(
 )
 }
 \arguments{
-\item{...}{content of the container}
+\item{...}{The content to be placed inside the window card. Can be any `shiny::tagList` or HTML content.}
 
-\item{title}{title of the header}
+\item{title}{The title displayed in the header of the window card.}
 
-\item{width}{width of the container}
+\item{width}{The initial width of the window card (e.g., "50\%", "600px").}
 
-\item{bg.color}{background color of the content area}
+\item{bg.color}{The background color of the content area within the window card. Can be a named R color or a hexadecimal color code.}
 
-\item{border.color}{color of the container border}
+\item{border.color}{The border color of the entire window card. Can be a named R color or a hexadecimal color code.}
 
-\item{header.text.color}{color of the header text}
+\item{header.text.color}{The text color of the title in the header.}
 
-\item{body.text.color}{color of the content text}
+\item{body.text.color}{The text color of the content within the card's body.}
 }
 \value{
-A window-like card container that is expandable and resizable
+A `shiny::div` element representing the moveable, resizable, and expandable window card.
 }
 \description{
-Easily expandable and resizable content container holder
+Creates an easily expandable, resizable, and moveable window-like container for content,
+mimicking a desktop window within your Shiny application or HTML output.
+}
+\details{
+The `windowCard` function is a versatile UI component that allows for highly interactive content display.
+Users can drag the window around the page, resize it from its edges, and expand/collapse its content.
+This is particularly useful for pop-up information, draggable dashboards, or interactive panels in
+complex Shiny applications. The window initially appears centered on the screen.
 }
 \note{
-Please note that only one windowCard may be created by page
+Due to the underlying JavaScript implementation and reliance on specific DOM IDs,
+only one `windowCard` should be created per page to ensure proper functionality and avoid conflicts.
+This function requires the `shiny` package for rendering and interactive functionality.
 }
 \section{Examples for r2resize}{
 
@@ -45,21 +54,55 @@ More examples and demo pages are located at this link -
 }
 
 \examples{
-#simple window card with default attributes
-#shows up centered on the screen
-r2resize::windowCard("sample r2symbols text")
+if (interactive()) {
+  library(shiny)
+  # Simple window card with default attributes
+  shinyApp(
+    ui = fluidPage(
+      h2("Interactive Window Card"),
+      windowCard(
+        shiny::h3("Welcome!"),
+        shiny::p("This is a draggable and resizable window."),
+        shiny::actionButton("closeBtn", "Close Window")
+      )
+    ),
+    server = function(input, output) {
+      observeEvent(input$closeBtn, {
+        # Example: How you might handle closing (requires custom JS for actual close)
+        showNotification("Window close requested (functionality not built-in)")
+      })
+    }
+  )
 
-
-#specify the width of the window card
-#specify the title
-#specify the header color
-#speciy other features
-r2resize::windowCard(
-title = "Sample Window card",
-width = "500px",
-bg.color = "white",
-border.color = "brown",
-header.text.color = "white",
-body.text.color = "black")
-
+  # Custom styled window card with a plot
+  shinyApp(
+    ui = fluidPage(
+      h2("Styled Window Card with Plot"),
+      windowCard(
+        title = "Dynamic Plot Window",
+        width = "600px",
+        bg.color = "#E8F5E9",
+        border.color = "#4CAF50",
+        header.text.color = "white",
+        body.text.color = "#333333",
+        shiny::plotOutput("myPlot")
+      )
+    ),
+    server = function(input, output) {
+      output$myPlot <- shiny::renderPlot({
+        hist(rnorm(100), col = "skyblue", border = "white", main = "Random Normal Data")
+      })
+    }
+  )
 }
+}
+\seealso{
+\code{\link{splitCard}}, \code{\link{splitCard2}}, \code{\link{sizeableCard}}
+
+Other Container Functions: 
+\code{\link{empahsisCard}()},
+\code{\link{sizeableCard}()},
+\code{\link{splitCard}()},
+\code{\link{splitCard2}()}
+}
+\concept{Container Functions}

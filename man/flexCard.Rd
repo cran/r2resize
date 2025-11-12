@@ -14,23 +14,38 @@ flexCard(
 )
 }
 \arguments{
-\item{...}{list of image containers, see example below}
+\item{...}{A list of image or content containers, where each item is a named vector or list specifying properties like `bg` (background image URL),
+`icon` (Font Awesome icon name), `title`, `subtitle`, `icon.color`, and `text.color`.
+See examples for the expected structure of these item lists.}
 
-\item{height.px}{height of container as numeric}
+\item{height.px}{Numeric. The fixed height of the entire `flexCard` container in pixels. If `NULL`, the height adjusts automatically.}
 
-\item{width.px}{width of container as numeric}
+\item{width.px}{Numeric. The fixed width of the entire `flexCard` container in pixels. If `NULL`, the width adjusts automatically.}
 
-\item{border.color}{color of border of each container}
+\item{border.color}{Character string. The color of the border for each individual card panel (e.g., "white", "#RRGGBB").}
 
-\item{border.width.px}{width of the container border}
+\item{border.width.px}{Numeric. The width of the border for each individual card panel in pixels.}
 
-\item{active.panel}{the active panel or container e.g. 1. Use 0 to make all panels inactive}
+\item{active.panel}{Numeric. The index (1-based) of the panel that should be initially active (expanded).
+Use `0` to make all panels initially inactive/collapsed.}
 }
 \value{
-Multiple cards with flex functionality
+An HTML `div` element containing multiple flex cards with interactive expansion functionality,
+  suitable for inclusion in Shiny applications or R Markdown documents.
 }
 \description{
-Expandable flexible card holder for images or navigation items
+Creates an expandable and flexible card holder, ideal for showcasing images, navigation items, or categorized content in an interactive manner.
+}
+\details{
+The `flexCard` function generates a visually appealing and interactive set of cards that expand on click.
+It is particularly useful for dashboards, portfolios, or content sections where space is at a premium
+but detailed information needs to be accessible. Each card can have its own background image,
+an icon, a main title, and a subtitle, with customizable colors for icons and text.
+The function relies on internal CSS and JavaScript to manage the expansion and collapse behavior.
+}
+\note{
+Ensure that `shiny` is loaded if using this function within a Shiny application.
+The `active.panel` parameter determines which card is initially open; setting it to `0` starts with all cards collapsed.
 }
 \section{Examples for r2resize}{
 
@@ -39,20 +54,69 @@ More examples and demo pages are located at this link -
 }
 
 \examples{
-r2resize::flexCard(
-  item1 = c(
-  bg = "https://r2resize.obi.obianom.com/m/image1.jpg",
-  icon = "edit",
-  title="Sample text 1",
-  subtitle="A cool subtitle"),
-  item2 = c(
-  bg = "https://r2resize.obi.obianom.com/m/image2.jpg",
-  icon = "edit",
-  title="Sample text 2",
-  subtitle="A cool subtitle",
-  icon.color = "blue",
-  text.color = "brown"
-  )
-)
+\dontrun{
+if (interactive()) {
+  library(shiny)
+  library(r2resize)
+  library(htmltools)
 
+  ui <- fluidPage(
+    tags$h2("Flexible Cards Example"),
+    flexCard(
+      item1 = c(
+        bg = "https://r2resize.obi.obianom.com/m/image1.jpg",
+        icon = "chart-line",
+        title = "Market Trends",
+        subtitle = "Analysis of current market movements"
+      ),
+      item2 = c(
+        bg = "https://r2resize.obi.obianom.com/m/image2.jpg",
+        icon = "flask",
+        title = "Research Projects",
+        subtitle = "Ongoing studies and experiments",
+        icon.color = "blue",
+        text.color = "lightgray"
+      ),
+      item3 = c(
+        bg = "https://r2resize.obi.obianom.com/m/image3.jpg",
+        icon = "users",
+        title = "Team Collaboration",
+        subtitle = "Enhancing team productivity",
+        icon.color = "green"
+      ),
+      height.px = 400,
+      width.px = 800,
+      border.color = "darkgray",
+      border.width.px = 2,
+      active.panel = 2 # Start with the second panel active
+    ),
+    tags$br(),
+    tags$h2("Flexible Cards with default active panel"),
+    flexCard(
+      itemA = c(
+        title = "Default Panel 1",
+        subtitle = "No background image",
+        icon = "info-circle"
+      ),
+      itemB = c(
+        title = "Default Panel 2",
+        subtitle = "Just text",
+        icon = "lightbulb"
+      )
+    )
+  )
+
+  server <- function(input, output) {}
+
+  shinyApp(ui, server)
 }
+}
+}
+\seealso{
+\code{\link{elastiCard}} for hover-elastic cards,
+\code{\link{shinyExpandImage}} for elegant image viewing and resizing.
+
+Other Image and Container Resizing Components: 
+\code{\link{elastiCard}()}
+}
+\concept{Image and Container Resizing Components}

@@ -1,7 +1,7 @@
-## ---- echo=TRUE---------------------------------------------------------------
+## ----echo=TRUE----------------------------------------------------------------
 library(r2resize)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    "Question Text",
 #    "Answer Text",
@@ -12,7 +12,7 @@ library(r2resize)
 #    slider.position = "85"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),
@@ -29,7 +29,7 @@ library(r2resize)
 #    slider.position = "85"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),
@@ -46,7 +46,7 @@ library(r2resize)
 #    slider.position = "85"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),
@@ -63,7 +63,7 @@ library(r2resize)
 #    slider.position = "85"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),
@@ -80,7 +80,7 @@ library(r2resize)
 #    slider.position = "85"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),
@@ -97,7 +97,7 @@ library(r2resize)
 #    slider.position = "85"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),
@@ -114,7 +114,7 @@ library(r2resize)
 #    slider.position = "85"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),
@@ -130,7 +130,7 @@ library(r2resize)
 #    text.right.color = "white"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),
@@ -146,7 +146,7 @@ library(r2resize)
 #    text.right.color = "white"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),
@@ -162,7 +162,7 @@ library(r2resize)
 #    text.right.color = "white"
 #  )
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  r2resize::splitCard2(
 #    shiny::div(
 #      shiny::tags$h2("Question"),

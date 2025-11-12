@@ -21,37 +21,47 @@ splitCard(
 )
 }
 \arguments{
-\item{left}{content on the left or top}
+\item{left}{The content to be displayed in the left (or top, if `position = "horizontal"`) panel. Can be any `shiny::tagList` or HTML content.}
 
-\item{right}{content on the right or bottom}
+\item{right}{The content to be displayed in the right (or bottom, if `position = "horizontal"`) panel. Can be any `shiny::tagList` or HTML content.}
 
-\item{splitter.color}{splitter color e.g red, black or #333333}
+\item{splitter.color}{The color of the draggable splitter line. Can be a named R color (e.g., "red", "black") or a hexadecimal color code (e.g., "#333333").}
 
-\item{bg.left.color}{left panel color e.g red, black or #333333}
+\item{bg.left.color}{The background color of the left panel. Can be a named R color or a hexadecimal color code.}
 
-\item{left.bg.url}{left panel background image e.g image1.png or https://..image1.png}
+\item{left.bg.url}{An optional URL for a background image for the left panel (e.g., "image1.png" or "https://example.com/image1.png").}
 
-\item{right.bg.url}{right panel background image e.g image1.png or https://..image1.png}
+\item{right.bg.url}{An optional URL for a background image for the right panel (e.g., "image1.png" or "https://example.com/image1.png").}
 
-\item{bg.right.color}{right panel color e.g red, black or #333333}
+\item{bg.right.color}{The background color of the right panel. Can be a named R color or a hexadecimal color code.}
 
-\item{border.color}{border color of the container e.g. red or #f5f5f5}
+\item{border.color}{The border color of the entire container. Can be a named R color or a hexadecimal color code.}
 
-\item{position}{position of divider or splitter}
+\item{position}{The orientation of the splitter. Can be "vertical" (left/right split) or "horizontal" (top/bottom split). Defaults to "vertical".}
 
-\item{text.left.color}{color of left panel text}
+\item{text.left.color}{The text color for the content within the left panel.}
 
-\item{text.right.color}{color of right panel text}
+\item{text.right.color}{The text color for the content within the right panel.}
 
-\item{min.height}{minimum height of the panel}
+\item{min.height}{The minimum height of the entire split container (e.g., "200px", "50vh").}
 
-\item{left.width}{width of the left panel e.g. 100 percent or 500 px}
+\item{left.width}{The initial width of the left panel (when `position = "vertical"`) or height of the top panel (when `position = "horizontal"`). Can be a percentage (e.g., "50\%") or a fixed pixel value (e.g., "500px").}
 }
 \value{
-Resizeable split screen container
+A `shiny::div` element representing the resizable split screen container, ready for inclusion in a Shiny UI or R Markdown output.
 }
 \description{
-Highly customizable and resizable split screen container
+Creates a highly customizable and resizable split screen container for arranging UI elements side-by-side or top-and-bottom.
+}
+\details{
+The `splitCard` function provides a dynamic way to present two distinct sections of content within a single, resizable container.
+Users can drag the splitter to adjust the visible area of each panel, making it ideal for comparisons,
+dashboards, or any scenario requiring flexible content layout. The `position` argument allows
+switching between a left/right split and a top/bottom split, offering versatility in design.
+It's particularly useful within Shiny applications or R Markdown documents where interactive layouts are desired.
+}
+\note{
+This function requires the `shiny` package for rendering and interactive functionality.
 }
 \section{Examples for r2resize}{
 
@@ -60,59 +70,64 @@ More examples and demo pages are located at this link -
 }
 
 \examples{
-#basic attributes
-r2resize::splitCard(
-  "Sample text",
-  "Sample text 2"
-)
+if (interactive()) {
+  library(shiny)
+  # Basic vertical split card with default settings
+  shinyApp(
+    ui = fluidPage(
+      h2("Basic Split Card"),
+      splitCard(
+        shiny::div(h3("Left Panel"), p("Content for the left side.")),
+        shiny::div(h3("Right Panel"), p("Content for the right side."))
+      )
+    ),
+    server = function(input, output) {}
+  )
 
-#specify background color for each side
-r2resize::splitCard(
-  "Sample r2symbols 1",
-  "Sample nextGen 1",
-  bg.right.color = "white",
-  bg.left.color = "lightgray",
-  position = "vertical"
-)
+  # Horizontal split card with custom colors and minimum height
+  shinyApp(
+    ui = fluidPage(
+      h2("Horizontal Split Card with Custom Styling"),
+      splitCard(
+        shiny::div(h3("Top Panel (Blue)"), p("Content for the top section.")),
+        shiny::div(h3("Bottom Panel (Green)"), p("Content for the bottom section.")),
+        bg.left.color = "#E0F2F7",
+        bg.right.color = "#E8F5E9",
+        splitter.color = "#7CB342",
+        position = "horizontal",
+        min.height = "300px",
+        border.color = "#4CAF50"
+      )
+    ),
+    server = function(input, output) {}
+  )
 
-#add the split card attribute on vertical
-r2resize::splitCard(
-  "Sample shinyStorePlus",
-  "Sample nextGen 1",
-  bg.right.color = "white",
-  bg.left.color = "lightgray",
-  border.color = "black",
-  text.left.color = "black",
-  text.right.color = "black",
-  position = "vertical"
-)
-
-
-#specify width of the left container
-#specify height of the entire panel
-r2resize::splitCard(
-  "pkg card.pro",
-  "pkg r2social",
-  bg.right.color = "white",
-  bg.left.color = "lightgray",
-  border.color = "black",
-  text.left.color = "black",
-  text.right.color = "black",
-  min.height = '400px',
-  left.width = "80\%"
-)
-
-
-# specify split card on the horizontal position
-r2resize::splitCard(
-  "Sample sciRmdTheme 1",
-  "Sample nextGen 1",
-  bg.right.color = "white",
-  bg.left.color = "lightgray",
-  border.color = "gray",
-  text.left.color = "black",
-  text.right.color = "black",
-  position = "horizontal"
-)
-
+  # Vertical split card with background images and specific widths
+  shinyApp(
+    ui = fluidPage(
+      h2("Split Card with Background Images"),
+      splitCard(
+        shiny::div(h3("Image Background Left"), p("Some text over an image.")),
+        shiny::div(h3("Image Background Right"), p("More text over another image.")),
+        left.bg.url = "https://r2resize.obi.obianom.com/m/image1.jpg",
+        right.bg.url = "https://r2resize.obi.obianom.com/m/image2.jpg",
+        text.left.color = "white",
+        text.right.color = "black",
+        left.width = "30\%",
+        min.height = "450px"
+      )
+    ),
+    server = function(input, output) {}
+  )
 }
+}
+\seealso{
+\code{\link{splitCard2}}, \code{\link{sizeableCard}}, \code{\link{windowCard}}
+
+Other Container Functions: 
+\code{\link{empahsisCard}()},
+\code{\link{sizeableCard}()},
+\code{\link{splitCard2}()},
+\code{\link{windowCard}()}
+}
+\concept{Container Functions}

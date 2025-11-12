@@ -2,22 +2,32 @@
 % Please edit documentation in R/containerResizer.R
 \name{sizeableCard}
 \alias{sizeableCard}
-\title{Resizable container content holder}
+\title{Resizable Container Content Holder with Size Controls}
 \usage{
 sizeableCard(..., bg.color = NULL, border.color = NULL)
 }
 \arguments{
-\item{...}{content of container}
+\item{...}{The content to be placed inside the sizeable card. Can be any `shiny::tagList` or HTML content.}
 
-\item{bg.color}{content background color e.g red, black or #333333}
+\item{bg.color}{The background color of the content area. Can be a named R color (e.g., "red", "black") or a hexadecimal color code (e.g., "#333333").}
 
-\item{border.color}{border color of container e.g. red or #f5f5f5}
+\item{border.color}{The border color of the container. Can be a named R color or a hexadecimal color code.}
 }
 \value{
-Container with a resizing toolbar feature on the right
+A `shiny::div` element representing the sizeable container with a resizing toolbar, ready for inclusion in a Shiny UI or R Markdown output.
 }
 \description{
-Highly customizable and resizable  container content holder
+Creates a highly customizable container that holds content and provides a mini toolbar on the right
+for adjusting the content's display size (small, medium, large).
+}
+\details{
+The `sizeableCard` function is designed to present content in a flexible box that users can
+scale using intuitive "A" (small, medium, large) buttons integrated into a toolbar. This is useful
+for displaying text, images, or other UI elements where the user might want to adjust their
+size without altering the entire page layout. It provides a simple, self-contained resizing mechanism.
+}
+\note{
+This function requires the `shiny` package for rendering.
 }
 \section{Examples for r2resize}{
 
@@ -26,24 +36,44 @@ More examples and demo pages are located at this link -
 }
 
 \examples{
-#simple sizeable card attribute
-r2resize::sizeableCard(
-  "sample rpkg.net text"
-)
+if (interactive()) {
+  library(shiny)
+  # Simple sizeable card with default settings
+  shinyApp(
+    ui = fluidPage(
+      h2("Basic Sizeable Card"),
+      sizeableCard(
+        shiny::p("This is some sample text within a sizeable card."),
+        shiny::img(src = "https://r2resize.obi.obianom.com/m/image1.jpg", height = "100px"),
+        shiny::p("Use the controls on the right to change its size.")
+      )
+    ),
+    server = function(input, output) {}
+  )
 
-
-#specify the background color for the card
-r2resize::sizeableCard(
-  "sample r2resume text",
-  bg.color = "lightgray"
-)
-
-
-#specify the border color additionally
-r2resize::sizeableCard(
-  "sample r2resume text",
-  bg.color = "lightgray",
-  border.color="black"
-)
-
+  # Sizeable card with custom background and border colors
+  shinyApp(
+    ui = fluidPage(
+      h2("Styled Sizeable Card"),
+      sizeableCard(
+        shiny::h4("My Report Summary"),
+        shiny::p("This card contains important information about a project."),
+        shiny::em("Adjust the size as needed."),
+        bg.color = "#F0F4C3",
+        border.color = "#C0CA33"
+      )
+    ),
+    server = function(input, output) {}
+  )
 }
+}
+\seealso{
+\code{\link{splitCard}}, \code{\link{splitCard2}}, \code{\link{windowCard}}
+
+Other Container Functions: 
+\code{\link{empahsisCard}()},
+\code{\link{splitCard}()},
+\code{\link{splitCard2}()},
+\code{\link{windowCard}()}
+}
+\concept{Container Functions}

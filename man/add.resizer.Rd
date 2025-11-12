@@ -2,7 +2,7 @@
 % Please edit documentation in R/markdownResizer.R
 \name{add.resizer}
 \alias{add.resizer}
-\title{Configure toolbar settings for the page}
+\title{Configure and add a dynamic resizing toolbar to HTML documents}
 \usage{
 add.resizer(
   theme.color = NULL,
@@ -21,37 +21,58 @@ add.resizer(
 )
 }
 \arguments{
-\item{theme.color}{theme color for resizer and table e.g. black or #000000}
+\item{theme.color}{A character string specifying the theme color for the resizer and table elements (e.g., "black" or "#000000").}
 
-\item{position}{position of the resize toolbar e.g. top or bottom}
+\item{position}{A character string indicating the position of the resize toolbar, either "top" or "bottom".}
 
-\item{font.size}{size of the page font in px e.g. 14px}
+\item{font.size}{A character string specifying the font size of the page elements in pixels (e.g., "14px").}
 
-\item{font.color}{color of the page font in e.g. darkblue or #006699}
+\item{font.color}{A character string specifying the font color of the page elements (e.g., "darkblue" or "#006699").}
 
-\item{tables}{boolean. TRUE or FALSE, to add resize toobar to tables}
+\item{tables}{A logical value (TRUE or FALSE). If TRUE, the resize toolbar will be added to HTML tables.}
 
-\item{images}{boolean. TRUE or FALSE, to add resize toobar to images}
+\item{images}{A logical value (TRUE or FALSE). If TRUE, the resize toolbar will be added to HTML images.}
 
-\item{line.color}{color of the resizer track e.g. red or #f5f5f5}
+\item{line.color}{A character string specifying the color of the resizer track (e.g., "red" or "#f5f5f5").}
 
-\item{thumb.width}{width of the resizer thumb e.g. 25}
+\item{thumb.width}{A numeric value specifying the width of the resizer thumb.}
 
-\item{thumb.height}{height of the resizer thumb e.g. 25}
+\item{thumb.height}{A numeric value specifying the height of the resizer thumb.}
 
-\item{line.width}{width of the resizer track e.g. 200}
+\item{line.width}{A numeric value specifying the width of the resizer track.}
 
-\item{line.height}{height of the resizer track e.g. 10}
+\item{line.height}{A numeric value specifying the height of the resizer track.}
 
-\item{dim.units}{unit for the height and width of the track or thumb}
+\item{dim.units}{A character string specifying the unit for the height and width of the track or thumb (e.g., "px").}
 
-\item{default.image.width}{default width of all images on the page e.g. 100}
+\item{default.image.width}{A character string specifying the default width of all images on the page (e.g., "100\%", "500px").}
 }
 \value{
-Inclusion of mini toolbar for images and tables within a page
+An HTML script tag containing the necessary CSS and JavaScript for the
+  resizing toolbar, applied as an `html` object.
 }
 \description{
-Set options for the inclusion of sizing toolbar in documents
+This function allows the inclusion and configuration of a responsive toolbar in HTML outputs,
+enabling users to dynamically resize images and tables within the document. It provides
+fine-grained control over the toolbar's appearance and behavior, enhancing the interactivity
+and user experience of R Markdown documents, Shiny applications, or any HTML output.
+}
+\details{
+The `add.resizer` function injects necessary CSS and JavaScript into your HTML document
+to create interactive resizing capabilities. It dynamically modifies the dimensions of
+images and tables based on user interaction with the generated toolbar. This is particularly
+useful for documents where content responsiveness and user-controlled viewing preferences
+are important.
+
+The function relies on an internal templating system to fetch and customize the
+CSS and JavaScript files. Parameters like `theme.color`, `font.size`, `line.color`,
+and dimension-related arguments directly influence the visual styling of the toolbar
+and the initial appearance of content.
+
+For Shiny applications, this function should be called within the UI to ensure the
+necessary scripts and styles are loaded when the application starts. In R Markdown
+documents, simply including a call to `add.resizer()` will integrate the toolbar
+into the knitted HTML output.
 }
 \section{Examples for r2resize}{
 
@@ -60,54 +81,78 @@ More examples and demo pages for this function are located at this link -
 }
 
 \examples{
-# default settings
+# Default settings: adds resizer to both tables and images at the top
 r2resize::add.resizer()
 
-# add resizer to only images
+# Add resizer to only images, placed at the bottom of the page
+if (interactive()) {
+  shiny::shinyApp(
+    ui = shiny::fluidPage(
+      r2resize::add.resizer(
+        tables = FALSE,
+        images = TRUE,
+        position = "bottom"
+      ),
+      shiny::tags$img(src = "https://via.placeholder.com/150", width = "100px"),
+      shiny::h3("Only images will have a resizer toolbar.")
+    ),
+    server = function(input, output) {}
+  )
+}
+
+# Add resizer to only tables with a specific theme color and font size
+if (interactive()) {
+  shiny::shinyApp(
+    ui = shiny::fluidPage(
+      r2resize::add.resizer(
+        tables = TRUE,
+        images = FALSE,
+        theme.color = "darkgreen",
+        font.size = "16px"
+      ),
+      shiny::h3("Table with resizer:"),
+      shiny::renderTable(data.frame(
+        A = 1:3,
+        B = LETTERS[1:3]
+      ))
+    ),
+    server = function(input, output) {}
+  )
+}
+
+# Customize resizer line color, width, and height, and set default image width
 r2resize::add.resizer(
-  tables = FALSE,
-  images = TRUE
- )
+  line.color = "#FF5733",
+  line.width = 250,
+  line.height = 10,
+  thumb.width = 30,
+  thumb.height = 30,
+  dim.units = "pt",
+  default.image.width = "60\%"
+)
 
-
-# add resizer to only tables
-r2resize::add.resizer(
-  tables = TRUE,
-  images = FALSE
- )
-
-
-# add resizer to both images
-r2resize::add.resizer(
-  tables = TRUE,
-  images = TRUE
- )
-
-# set position of the resize toolbar
-r2resize::add.resizer(
-  position = "top" #this is the default, another is 'bottom'
- )
-
-# set resizer line color, height and width
-r2resize::add.resizer(
-  line.color = "green",
-  line.width = 150,
-  line.height = 5
- )
-
-
-#declare more arguments including default image size
-r2resize::add.resizer(
-  theme.color = "blue",
-  position = "top",
-  font.size = "12px",
-  font.color = "brown",
-  tables = TRUE,
-  images = TRUE,
-  line.color = "green",
-  line.width = 150,
-  line.height = 5,
-  default.image.width = "40\%"
-) # customized settings
+# Full customization example for R Markdown or Shiny
+\dontrun{
+  # In an R Markdown document or Shiny UI:
+  add.resizer(
+    theme.color = "purple",
+    position = "top",
+    font.size = "13px",
+    font.color = "#4A148C",
+    tables = TRUE,
+    images = TRUE,
+    line.color = "#C2185B",
+    thumb.width = 28,
+    thumb.height = 28,
+    line.width = 200,
+    line.height = 8,
+    dim.units = "px",
+    default.image.width = "75\%"
+  )
+}
 
 }
+\seealso{
+\code{\link{splitCard}}, \code{\link{shinyExpandImage}}
+}
+\concept{Interactive Components}

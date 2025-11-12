@@ -12,7 +12,7 @@
 
 <meta name="author" content="Obinna N. Obianom" />
 
-<meta name="date" content="2024-11-25" />
+<meta name="date" content="2025-11-11" />
 
 <title>New features r2resize since 1.3: Resizeable Expandable Splittable containers and boxes in R</title>
 
@@ -51,7 +51,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -341,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1 class="title toc-ignore">New features r2resize since 1.3: Resizeable
 Expandable Splittable containers and boxes in R</h1>
 <h4 class="author">Obinna N. Obianom</h4>
-<h4 class="date">2024-11-25</h4>
+<h4 class="date">2025-11-11</h4>
 
 
 
@@ -359,36 +359,36 @@ shown below</p>
 <h3>Use cases</h3>
 <div id="splitcard-function-resizable-split-screen-container" class="section level4">
 <h4>splitCard function: Resizable split screen container</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>r2resize<span class="sc">::</span><span class="fu">splitCard</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Sample r2symbols 1&quot;</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Sample nextGen 1&quot;</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg.right.color =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg.left.color =</span> <span class="st">&quot;lightgray&quot;</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">position =</span> <span class="st">&quot;vertical&quot;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>r2resize<span class="sc">::</span><span class="fu">splitCard</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="st">&quot;Sample r2symbols 1&quot;</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="st">&quot;Sample nextGen 1&quot;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="at">bg.right.color =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="at">bg.left.color =</span> <span class="st">&quot;lightgray&quot;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="at">position =</span> <span class="st">&quot;vertical&quot;</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="sizeablecard-function-container-with-sizing-toolbar" class="section level4">
 <h4>sizeableCard function: Container with sizing toolbar</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r2resize<span class="sc">::</span><span class="fu">sizeableCard</span>(shiny<span class="sc">::</span><span class="fu">h2</span>(<span class="st">&quot;Sizeable text&quot;</span>), <span class="st">&quot;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">Lobortis mattis aliquam faucibus purus in massa tempor. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. At lectus urna duis convallis. Arcu non odio euismod lacinia at quis risus. Tincidunt ornare massa eget egestas purus viverra accumsan in. Cras adipiscing enim eu turpis egestas pretium aenean.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>r2resize<span class="sc">::</span><span class="fu">sizeableCard</span>(shiny<span class="sc">::</span><span class="fu">h2</span>(<span class="st">&quot;Sizeable text&quot;</span>), <span class="st">&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="st">Lobortis mattis aliquam faucibus purus in massa tempor. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. At lectus urna duis convallis. Arcu non odio euismod lacinia at quis risus. Tincidunt ornare massa eget egestas purus viverra accumsan in. Cras adipiscing enim eu turpis egestas pretium aenean.&quot;</span>)</span></code></pre></div>
 </div>
 <div id="windowcard-function-window-like-container-with-resizable-and-expandable-functions" class="section level4">
 <h4>windowCard function: Window like container with resizable and
 expandable functions</h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>r2resize<span class="sc">::</span><span class="fu">windowCard</span>(<span class="st">&quot;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">Drag to the edge of the window to expand. Lobortis mattis aliquam faucibus purus in massa tempor. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. At lectus urna duis convallis. Arcu non odio euismod lacinia at quis risus. Tincidunt ornare massa eget egestas purus viverra accumsan in. Cras adipiscing enim eu turpis egestas pretium aenean.&quot;</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">title =</span> <span class="st">&quot;Draggable, Resizable, Exapandable&quot;</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">width =</span> <span class="st">&quot;500px&quot;</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">bg.color =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">border.color =</span> <span class="st">&quot;brown&quot;</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">header.text.color =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">body.text.color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>r2resize<span class="sc">::</span><span class="fu">windowCard</span>(<span class="st">&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="st">Drag to the edge of the window to expand. Lobortis mattis aliquam faucibus purus in massa tempor. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. At lectus urna duis convallis. Arcu non odio euismod lacinia at quis risus. Tincidunt ornare massa eget egestas purus viverra accumsan in. Cras adipiscing enim eu turpis egestas pretium aenean.&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>                     <span class="at">title =</span> <span class="st">&quot;Draggable, Resizable, Exapandable&quot;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>                        <span class="at">width =</span> <span class="st">&quot;500px&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>                        <span class="at">bg.color =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>                        <span class="at">border.color =</span> <span class="st">&quot;brown&quot;</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>                        <span class="at">header.text.color =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>                        <span class="at">body.text.color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 </div>
 <div id="empahsiscard-function-container-with-moving-border-to-emphasize-content" class="section level4">
 <h4>empahsisCard function: container with moving border to emphasize
 content</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(r2symbols)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>r2resize<span class="sc">::</span><span class="fu">emphasisCard</span>(<span class="st">&quot;text1&quot;</span>,<span class="fu">symbol</span>(<span class="st">&quot;heart&quot;</span>,<span class="st">&quot;ram&quot;</span>,<span class="st">&quot;hippopotamus&quot;</span>,<span class="st">&quot;alpha&quot;</span>,<span class="st">&quot;beta&quot;</span>,<span class="at">font.size=</span><span class="dv">60</span>), <span class="at">bg.color =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">library</span>(r2symbols)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>r2resize<span class="sc">::</span><span class="fu">emphasisCard</span>(<span class="st">&quot;text1&quot;</span>,<span class="fu">symbol</span>(<span class="st">&quot;heart&quot;</span>,<span class="st">&quot;ram&quot;</span>,<span class="st">&quot;hippopotamus&quot;</span>,<span class="st">&quot;alpha&quot;</span>,<span class="st">&quot;beta&quot;</span>,<span class="at">font.size=</span><span class="dv">60</span>), <span class="at">bg.color =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
